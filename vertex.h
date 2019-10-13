@@ -2,7 +2,7 @@
 #define __VERTEX_H__
 #include <list>
 #include <string>
-
+#include <queue>
 using namespace std;
 
 class Vertex {
@@ -10,16 +10,25 @@ class Vertex {
     int element;
     string name;
     int weight;
+    int grauEntrada;
 
   public:
+    Vertex(){
+      grauEntrada = 0;
+    }
     list <Vertex> adjacents;
     void loadGraph();
     void setElement(int);
     int getElement();
     void setAdjacents(int);
     void setName(string);
+    string getName();
     void setWeight(int);
+    int getWeight();
     list <Vertex> getAdjacents();
+    void aumentaGrau();
+    void diminuiGrau();
+    int getGrau();
 };
 
 class Graph {
@@ -28,8 +37,9 @@ class Graph {
     list <Vertex> vertexes;
     list <int> cod;
     void createNewGraph();
-    void loadNames();
-    void loadNamesIntoGraph();
+    void printGraph();
+    void topologic();
+    void setVertex(Vertex &vertice, string, int, int);
 };
 
 #endif

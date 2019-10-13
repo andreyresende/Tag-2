@@ -1,0 +1,26 @@
+digraph G {
+Calculo_I -> Calculo_II [label="6"];
+Calculo_I -> Probabilidade_e_Estatistica [label="6"];
+Algoritmos_e_Programacao_de_Computadores -> Circuitos_Logicos [label="6"];
+Algoritmos_e_Programacao_de_Computadores -> Laboratorio_de_Circuitos_Logicos [label="6"];
+Estrutura_de_Dados -> Tecnicas_de_Programacao_1 [label="4"];
+Estrutura_de_Dados -> Logica_Computacional_1 [label="4"];
+Estrutura_de_Dados -> Teoria_e_Aplicacao_de_Grafos [label="4"];
+Estrutura_de_Dados -> Redes_de_Computadores [label="4"];
+Estrutura_de_Dados -> Linguagens_de_Programacao [label="4"];
+Estrutura_de_Dados -> Introducao_a_Inteligencia_Artificial [label="4"];
+Estrutura_de_Dados -> Sistemas_de_Informacao [label="4"];
+Estrutura_de_Dados -> Projeto_e_Analise_de_Algoritmos [label="4"];
+Algebra_1 -> Automatos_e_Computabilidade [label="4"];
+Calculo_II -> Calculo_Numerico [label="6"];
+Probabilidade_e_Estatistica -> Computacao_Experimental [label="4"];
+Laboratorio_de_Circuitos_Logicos -> Organizacao_e_Arquitetura_de_Computadores [label="2"];
+Tecnicas_de_Programacao_1 -> Tecnicas_de_programacao_2 [label="4"];
+Tecnicas_de_Programacao_1 -> Engenharia_de_Software [label="4"];
+Redes_de_Computadores -> Seguranca_Computacional [label="4"];
+Organizacao_e_Arquitetura_de_Computadores -> Software_Basico [label="4"];
+Tecnicas_de_programacao_2 -> Programacao_Concorrente [label="4"];
+Software_Basico -> Compiladores [label="4"];
+Programacao_Concorrente -> Fundamentos_de_Sistemas_Operacionais [label="4"];
+
+}

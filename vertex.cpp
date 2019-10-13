@@ -2,6 +2,7 @@
 #include <fstream>
 #include "vertex.h"
 #include <string>
+#include <queue>
 
 using namespace std;
 
@@ -39,242 +40,180 @@ void Vertex::setName(string name) {
   this->name = name;
 }
 
+string Vertex::getName() {
+  return this->name;
+}
+
 void Vertex::setWeight(int weight) {
   this->weight = weight;
 }
 
+int Vertex::getWeight() {
+  return this->weight;
+}
+
 void Graph::createNewGraph() {
   Vertex vertice1;
-  vertice1.setName("Calculo I");
-  vertice1.setElement(113034);
-  vertice1.setWeight(6);
-  
-  
+  this->setVertex(vertice1, "Calculo_I", 113034, 6);
+
   Vertex vertice2;
-  vertice2.setName("Introducao aos Sistemas Computacionais");
-  vertice2.setElement(113468);
-  vertice2.setWeight(4);
-  
+  this->setVertex(vertice2, "Introducao_aos_Sistemas_Computacionais", 113468, 4);
   
   Vertex vertice3;
-  vertice3.setName("Algoritmos e Programacao de Computadores");
-  vertice3.setElement(113476);
-  vertice3.setWeight(6);
-  
+  this->setVertex(vertice3, "Algoritmos_e_Programacao_de_Computadores", 113476, 6);
   
   Vertex vertice4;
-  vertice4.setName("Informatica e Sociedade");
-  vertice4.setElement(116726);
-  vertice4.setWeight(2);
-  
+  this->setVertex(vertice4, "Informatica_e_Sociedade", 116726, 2);
   
   Vertex vertice5;
-  vertice5.setName("Fundamentos Teoricos da Computacao");
-  vertice5.setElement(113450);
-  vertice5.setWeight(4);
-  
+  this->setVertex(vertice5, "Fundamentos_Teoricos_da_Computacao", 113450, 4);
   
   Vertex vertice6;
-  vertice6.setName("Circuitos Logicos");
-  vertice6.setElement(129011);
-  vertice6.setWeight(4);
+  this->setVertex(vertice6, "Circuitos_Logicos", 129011, 4);
   vertice3.adjacents.push_back(vertice6);
+  vertice6.aumentaGrau();
 
-  
   Vertex vertice7;
-  vertice7.setName("Laboratorio de Circuitos Logicos");
-  vertice7.setElement(129020);
-  vertice7.setWeight(2);
+  this->setVertex(vertice7, "Laboratorio_de_Circuitos_Logicos", 129020, 2);
   vertice3.adjacents.push_back(vertice7);
-  
+  vertice7.aumentaGrau();
   
   Vertex vertice8;
-  vertice8.setName("Calculo II");
-  vertice8.setElement(113042);
-  vertice8.setWeight(6);
+  this->setVertex(vertice8, "Calculo_II", 113042, 6);
   vertice1.adjacents.push_back(vertice8);
-  
+  vertice8.aumentaGrau();
   
   Vertex vertice9;
-  vertice9.setName("Introducao a Algebra Linear");
-  vertice9.setElement(113093);
-  vertice9.setWeight(4);
-  
+  this->setVertex(vertice9, "Introducao_a_Algebra_Linear", 113093, 4);
   
   Vertex vertice10;
-  vertice10.setName("Estrutura de Dados");
-  vertice10.setElement(116319);
-  vertice10.setWeight(4);
-  
-  
+  this->setVertex(vertice10, "Estrutura_de_Dados", 116319, 4);
+
   Vertex vertice11;
-  vertice11.setName("Organizacao e Arquitetura de Computadores");
-  vertice11.setElement(116394);
-  vertice11.setWeight(4);
+  this->setVertex(vertice11, "Organizacao_e_Arquitetura_de_Computadores", 116394, 4);
   vertice6.adjacents.push_back(vertice11);
+  vertice11.aumentaGrau();
   vertice7.adjacents.push_back(vertice11);
-  
+  vertice11.aumentaGrau();
   
   Vertex vertice12;
-  vertice12.setName("Tecnicas de Programacao 1");
-  vertice12.setElement(117889);
-  vertice12.setWeight(4);
+  this->setVertex(vertice12, "Tecnicas_de_Programacao_1", 117889, 4);
   vertice10.adjacents.push_back(vertice12);
-  
+  vertice12.aumentaGrau();
   
   Vertex vertice13;
-  vertice13.setName("Algebra 1");
-  vertice13.setElement(113107);
-  vertice13.setWeight(4);
-  
+  this->setVertex(vertice13, "Algebra_1", 113107, 4);
   
   Vertex vertice14;
-  vertice14.setName("Calculo Numerico");
-  vertice14.setElement(113417);
-  vertice14.setWeight(4);
+  this->setVertex(vertice14, "Calculo_Numerico", 113417, 4);
   vertice8.adjacents.push_back(vertice14);
+  vertice14.aumentaGrau();
   
   Vertex vertice15;
-  vertice15.setName("Probabilidade e Estatistica");
-  vertice15.setElement(115045);
-  vertice15.setWeight(4);
+  this->setVertex(vertice15, "Probabilidade_e_Estatistica", 115045, 4);
   vertice1.adjacents.push_back(vertice15);
-  
+  vertice15.aumentaGrau();
   
   Vertex vertice16;
-  vertice16.setName("Logica Computacional 1");
-  vertice16.setElement(117366);
-  vertice16.setWeight(4);
+  this->setVertex(vertice16, "Logica_Computacional_1", 117366, 4);
   vertice10.adjacents.push_back(vertice16);
-  
+  vertice16.aumentaGrau();
   
   Vertex vertice17;
-  vertice17.setName("Tecnicas de Programacao 2");
-  vertice17.setElement(117897);
-  vertice17.setWeight(4);
+  this->setVertex(vertice17, "Tecnicas_de_programacao_2", 117897, 4);
   vertice12.adjacents.push_back(vertice17);
-  
+  vertice17.aumentaGrau();
   
   Vertex vertice18;
-  vertice18.setName("Teoria e Aplicacao de Grafos");
-  vertice18.setElement(117901);
-  vertice18.setWeight(4);
+  this->setVertex(vertice18, "Teoria_e_Aplicacao_de_Grafos", 117901, 4);
   vertice10.adjacents.push_back(vertice18);
-  
+  vertice18.aumentaGrau();
   
   Vertex vertice19;
-  vertice19.setName("Redes de Computadores");
-  vertice19.setElement(116572);
-  vertice19.setWeight(4);
+  this->setVertex(vertice19, "Redes_de_Computadores", 116572, 4);
   vertice10.adjacents.push_back(vertice19);
-  
+  vertice19.aumentaGrau();
   
   Vertex vertice20;
-  vertice20.setName("Linguagens de Programacao");
-  vertice20.setElement(116343);
-  vertice20.setWeight(4);
+  this->setVertex(vertice20, "Linguagens_de_Programacao", 116343, 4);
   vertice10.adjacents.push_back(vertice20);
-  
+  vertice20.aumentaGrau();
   
   Vertex vertice21;
-  vertice21.setName("Programacao Concorrente");
-  vertice21.setElement(117935);
-  vertice21.setWeight(4);
+  this->setVertex(vertice21, "Programacao_Concorrente", 117935, 4);
   vertice17.adjacents.push_back(vertice21);
-  
-  
+  vertice21.aumentaGrau();
   
   Vertex vertice22;
-  vertice22.setName("Engenharia de Software");
-  vertice22.setElement(116441);
-  vertice22.setWeight(4);
+  this->setVertex(vertice22, "Engenharia_de_Software", 116441, 4);
   vertice12.adjacents.push_back(vertice22);
-  
+  vertice22.aumentaGrau();
   
   Vertex vertice23;
-  vertice23.setName("Bancos de Dados");
-  vertice23.setElement(116378);
-  vertice23.setWeight(4);
-  
+  this->setVertex(vertice23, "Bancos_de_Dados", 116378, 4);
   
   Vertex vertice24;
-  vertice24.setName("Introducao a Inteligencia Artificial");
-  vertice24.setElement(116653);
-  vertice24.setWeight(4);
+  this->setVertex(vertice24, "Introducao_a_Inteligencia_Artificial", 116653, 4);
   vertice10.adjacents.push_back(vertice24);
-  
+  vertice24.aumentaGrau();
   
   Vertex vertice25;
-  vertice25.setName("Software Basico");
-  vertice25.setElement(116432);
-  vertice25.setWeight(4);
+  this->setVertex(vertice25, "Software_Basico", 116432, 4);
   vertice10.adjacents.push_back(vertice25);
+  vertice25.aumentaGrau();
   vertice11.adjacents.push_back(vertice25);
-  
+  vertice25.aumentaGrau();
   
   Vertex vertice26;
-  vertice26.setName("Fundamentos de Sistemas Operacionais");
-  vertice26.setElement(117960);
-  vertice26.setWeight(4);
+  this->setVertex(vertice26, "Fundamentos_de_Sistemas_Operacionais", 117960, 4);
   vertice21.adjacents.push_back(vertice26);
-  
+  vertice26.aumentaGrau();
   
   Vertex vertice27;
-  vertice27.setName("Automatos e Computabilidade");
-  vertice27.setElement(116882);
-  vertice27.setWeight(6);
+  this->setVertex(vertice27, "Automatos_e_Computabilidade", 116882, 6);
   vertice13.adjacents.push_back(vertice27);
-  
+  vertice27.aumentaGrau();
   
   Vertex vertice28;
-  vertice28.setName("Sistemas de Informacao");
-  vertice28.setElement(116416);
-  vertice28.setWeight(4);
+  this->setVertex(vertice28, "Sistemas_de_Informacao", 116416, 4);
   vertice10.adjacents.push_back(vertice28);
-  
+  vertice28.aumentaGrau();
   
   Vertex vertice29;
-  vertice29.setName("Computacao Experimental");
-  vertice29.setElement(117943);
-  vertice29.setWeight(4);
+  this->setVertex(vertice29, "Computacao_Experimental", 117943, 4);
   vertice10.adjacents.push_back(vertice29);
+  vertice29.aumentaGrau();
   vertice15.adjacents.push_back(vertice29);
-  
+  vertice29.aumentaGrau();
   
   Vertex vertice30;
-  vertice30.setName("Projeto e Analise de Algoritmos");
-  vertice30.setElement(117536);
-  vertice30.setWeight(4);
+  this->setVertex(vertice30, "Projeto_e_Analise_de_Algoritmos", 117536, 4);
   vertice1.adjacents.push_back(vertice30);
+  vertice30.aumentaGrau();
   vertice10.adjacents.push_back(vertice30);
-  
+  vertice30.aumentaGrau();
   
   Vertex vertice31;
-  vertice31.setName("Compiladores");
-  vertice31.setElement(117951);
-  vertice31.setWeight(4);
+  this->setVertex(vertice31, "Compiladores", 117951, 4);
   vertice20.adjacents.push_back(vertice31);
+  vertice31.aumentaGrau();
   vertice25.adjacents.push_back(vertice31);
+  vertice31.aumentaGrau();
   vertice27.adjacents.push_back(vertice31);
+  vertice31.aumentaGrau();
   
   
   Vertex vertice32;
-  vertice32.setName("Seguranca Computacional");
-  vertice32.setElement(117927);
-  vertice32.setWeight(4);
+  this->setVertex(vertice32, "Seguranca_Computacional", 117927, 4);
   vertice19.adjacents.push_back(vertice32);
+  vertice32.aumentaGrau();
   
   
   Vertex vertice33;
-  vertice33.setName("Metodologia Cientifica");
-  vertice33.setElement(117919);
-  vertice33.setWeight(2);
-  
+  this->setVertex(vertice33,"Metodologia_Cientifica", 117919, 2);
   
   Vertex vertice34;
-  vertice34.setName("Topicos Avancados em Computadores");
-  vertice34.setElement(116297);
-  vertice34.setWeight(4);
+  this->setVertex(vertice34, "Topicos_Avancados_em_Computadores", 116297, 4);
   
   vertexes.push_back(vertice1);
   vertexes.push_back(vertice2);
@@ -310,97 +249,86 @@ void Graph::createNewGraph() {
   vertexes.push_back(vertice32);
   vertexes.push_back(vertice33);
   vertexes.push_back(vertice34);
-
-  for (auto & i : this->vertexes) {
-      cout << "Elemento: " << i.getElement() << endl;
-    for(auto & j : i.adjacents) {
-      cout << j.getElement() << ' ';
-    }
-    cout << endl;
-  }
-
-  /* 
-  FILE *materias;
-  FILE *inicial;
-  FILE *names;
-  string nome;
-  int id, idAdj, idInicial;
-  bool naoencontrado = false;
-
-  char arquivo[] = "inicial.txt";
-  inicial = fopen(arquivo, "r");
-  char file[] = "materias.txt";
-  materias = fopen(file, "r");
-
-  names = fopen("Names.txt", "r");
-
-  if (materias == NULL) {
-      cout << "Erro ao abrir Arquivo" << endl;
-  }
-  for (int i = 0; i < 33; i++){//Cria o grafo com todas as disciplinas, setando seus ID's
-    Vertex vertice;
-    fscanf(inicial, "%d", &idInicial);
-    vertice.setElement(idInicial);//Seta o ID
-    for(auto & i : this->names) {
-      nome
-    } 
-    vertice.setName(nome);//Seta o nome
-    cout << "Teste, Element = " << idInicial << ", Nome = " << nome << endl;
-    this->vertexes.push_back(vertice);
-  }
-  fclose(names);
-  while (fscanf(materias, "%d %d", &id, &idAdj) != EOF) {
-    Vertex vertex;
-    vertex.setElement(idAdj);//Analisando a partir do adjacente
-    naoencontrado = false;
-
-    if (this->vertexes.size() == 0) {
-      if (idAdj == 0){
-        Vertex vertex2;
-        vertex2.setElement(id);
-        this->vertexes.push_back(vertex2);
-      }
-      else {
-        vertex.setAdjacents(id);
-        this->vertexes.push_back(vertex);
-      }
-    }
-    else {
-      if (idAdj == 0){
-        Vertex vertex2;
-        vertex2.setElement(id);
-        this->vertexes.push_back(vertex2);
-      }
-      else {
-        for (auto & i : this->vertexes){
-          if (idAdj == i.getElement()) {
-            i.setAdjacents(id);
-            naoencontrado = true;
-          }
-        }
-        if (!naoencontrado) {
-          vertex.setAdjacents(id);
-          this->vertexes.push_back(vertex);
-        }
-    }
-    }
-  }
-  for (auto & i : this->vertexes) {
-      cout << "Elemento: " << i.getElement() << endl;
-    for(auto & j : i.adjacents) {
-      cout << j.getElement() << ' ';
-    }
-    cout << endl;
-  }
-  fclose(inicial);
-  fclose(materias);
- */
 }
 
-void Graph::loadNamesIntoGraph() {
-  for (auto & i : this->vertexes) {
-    for (auto & j : this->names) {
+void Graph::topologic(){
+  ofstream file;
+  file.open("topologic_order.dot");
+  file << "digraph G {\n";
 
+  queue<Vertex> fila;
+  int contador = 0;
+  int visitados = 0;
+  for(auto & i : this->vertexes){
+    if(i.getGrau() == 0){
+      fila.push(i);
     }
+    //cout << i.getElement() << ": " << i.getName() << " " << i.getGrau() << " Pre-requisitos" << endl;
   }
+  cout << "Teste: " << fila.size() << endl;
+  while(fila.size() > 0){//Pra cada elemento da fila
+  Vertex vertice = fila.front();//Salvo o vertice
+    fila.pop();//Removo da fila
+    visitados++;//Incremento visitados
+    //cout << "Vertice: " << vertice.getName();
+    //cout << " |Vizinhos de vertice: " << vertice.adjacents.size() << endl;
+
+    for(auto & i : vertice.adjacents){//Ai, pra cada vizinho de vertice
+    //cout << contador << endl;
+      for(auto & j : this->vertexes){//Procuro na lista de vertices do grafo, quais equivalem aos adjacentes
+        if(j.getElement() == i.getElement()){//Quando acho
+          //cout << "Iterador i = " << i.getName()  << " Grau do vertice: " << i.getGrau()<< endl;
+          j.diminuiGrau();//Decremento em 1 o grau
+
+          cout << vertice.getName() << " -> " << j.getName() << endl;
+          if(j.getGrau() == 0){
+            file << vertice.getName() << " -> " << j.getName() << " [label=\"" << vertice.getWeight() << "\"]" << ";\n";
+            fila.push(j);
+            cout << "Push: "<< j.getName() << endl;
+          }
+        }
+      }
+    }
+    contador++;
+  }
+  cout << "Visitados = " << visitados << endl;
+  if(visitados != 34){
+    cout << "Numero de vertices visitados diferente do numero de vertices do grafo, ordenacao topologica nao e possivel" << endl;
+  }
+  file << "\n}";
+}
+
+void Vertex::diminuiGrau(){
+  this->grauEntrada--;
+}
+
+void Graph::setVertex(Vertex &vertice, string nome, int codigo, int creditos){
+  vertice.setName(nome);
+  vertice.setElement(codigo);
+  vertice.setWeight(creditos);
+}
+
+int Vertex::getGrau(){
+  return this->grauEntrada;
+}
+
+void Vertex::aumentaGrau(){
+  this->grauEntrada++;
+}
+
+void Graph::printGraph() {
+  ofstream file;
+  file.open("graph.dot");
+  file << "digraph G {\n";
+  for (auto & i : this->vertexes){
+    if(i.adjacents.size() == 0){
+      file << i.getName() << ";\n";
+    }
+    else {
+      for(auto & j : i.adjacents) {
+        file << i.getName() << " -> " << j.getName() << " [label=\"" << j.getWeight() << "\"]" << ";\n";
+      }
+    }    
+  }
+  file << "\n}";
 }
