@@ -261,7 +261,7 @@ void Graph::topologic(){
   for (auto & i : this->vertexes) {
     file << i.getElement() << ";";
   }
-  file << "\n}";
+  file << "\n}\nranksep=6;\n";
 
   queue<Vertex> fila;
   int contador = 0;
