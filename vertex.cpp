@@ -259,7 +259,7 @@ void Graph::topologic(){
   file << "subgraph { rank = same; ";
 
   for (auto & i : this->vertexes) {
-    file << i.getName() << ";";
+    file << i.getElement() << ";";
   }
   file << "\n}";
 
@@ -269,12 +269,11 @@ void Graph::topologic(){
   for(auto & i : this->vertexes){
     if(i.getGrau() == 0){
       fila.push(i);
-      file << i.getName() << ";\n";
+      file << i.getElement() << ";\n";
 
     }
     //cout << i.getElement() << ": " << i.getName() << " " << i.getGrau() << " Pre-requisitos" << endl;
   }
-  cout << "Teste: " << fila.size() << endl;
   while(fila.size() > 0){//Pra cada elemento da fila
   Vertex vertice = fila.front();//Salvo o vertice
     fila.pop();//Removo da fila
@@ -289,8 +288,8 @@ void Graph::topologic(){
           //cout << "Iterador i = " << i.getName()  << " Grau do vertice: " << i.getGrau()<< endl;
           j.diminuiGrau();//Decremento em 1 o grau
 
-          file << vertice.getName() << " -> " << j.getName() << " [label=\"" << vertice.getWeight() << "\"]" << ";\n";
-          cout << vertice.getName() << " -> " << j.getName() << endl;
+          file << vertice.getElement() << " -> " << j.getElement() << " [label=\"" << vertice.getWeight() << "\"]" << ";\n";
+          //cout << vertice.getName() << " -> " << j.getName() << endl;
           if(j.getGrau() == 0){
             fila.push(j);
             //cout << "Push: "<< j.getName() << endl;
@@ -328,18 +327,50 @@ void Vertex::aumentaGrau(){
 void Graph::printGraph() {
   ofstream file;
   file.open("graph.dot");
-  file << "digraph G {\n label = \"Dígrafo Curso Ciência da Computação - 2019.2\" \n";
+  file << "digraph G {\n label = \"Dígrafo Curso Ciência da Computação - 2019.2\" \nnode [shape=circle]\n";
   
   for (auto & i : this->vertexes){
     if(i.adjacents.size() == 0){
-      file << i.getName() << ";\n";
+      file << i.getElement() << ";\n";
     }
     else {
       for(auto & j : i.adjacents) {
-        file << i.getName() << " -> " << j.getName() << " [label=\"" << j.getWeight() << "\"]" << ";\n";
+        file << i.getElement() << " -> " << j.getElement() << " [label=\"" << j.getWeight() << "\"]" << ";\n";
       }
     }    
   }
 
   file << "\n}";
+}
+
+void Graph::longestPath() {
+  queue<Vertex> fila;
+  cout << endl << endl << endl << endl;
+  for (auto & i : this->vertexes) {
+    if (i.getGrau() == 0) {
+      if (i.adjacents.size() != 0) {
+        cout << i.getElement() << " tem " << i.adjacents.size() <<" vizinhos" << endl; 
+        fila.push(i);
+      }
+    }
+  }
+  cout << endl << endl << endl << endl;
+  while (fila.size() > 0) {
+    Vertex vertice = fila.front();
+    fila.pop();
+
+    for (auto & i : vertice.adjacents) {
+      for(auto & j : this->vertexes){
+        if(j.getElement() == i.getElement()){
+          if(j.adjacents.size() != 0) {
+            cout << j.getElement() << " tem " << j.adjacents.size() << " vizinhos" << endl;
+            cout << "Com peso: " << j.adjacents.front().getWeight() << endl; 
+            fila.push(j);
+          }
+
+        }
+      }
+    }
+  }
+  cout << "Teste: " << fila.size() << endl;
 }

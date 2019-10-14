@@ -40,6 +40,7 @@ class Graph {
     void printGraph();
     void topologic();
     void setVertex(Vertex &vertice, string, int, int);
+    void longestPath();
 };
 
 #endif
