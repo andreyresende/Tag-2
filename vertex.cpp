@@ -254,7 +254,14 @@ void Graph::createNewGraph() {
 void Graph::topologic(){
   ofstream file;
   file.open("topologic_order.dot");
-  file << "digraph G {\n";
+  file << "digraph G {\n label = \"Ordenação Topológica do Curso Ciência da Computação - 2019.2\"\n node [shape=circle]\n";
+
+  file << "subgraph { rank = same; ";
+
+  for (auto & i : this->vertexes) {
+    file << i.getName() << ";";
+  }
+  file << "\n}";
 
   queue<Vertex> fila;
   int contador = 0;
@@ -262,6 +269,8 @@ void Graph::topologic(){
   for(auto & i : this->vertexes){
     if(i.getGrau() == 0){
       fila.push(i);
+      file << i.getName() << ";\n";
+
     }
     //cout << i.getElement() << ": " << i.getName() << " " << i.getGrau() << " Pre-requisitos" << endl;
   }
@@ -280,11 +289,11 @@ void Graph::topologic(){
           //cout << "Iterador i = " << i.getName()  << " Grau do vertice: " << i.getGrau()<< endl;
           j.diminuiGrau();//Decremento em 1 o grau
 
+          file << vertice.getName() << " -> " << j.getName() << " [label=\"" << vertice.getWeight() << "\"]" << ";\n";
           cout << vertice.getName() << " -> " << j.getName() << endl;
           if(j.getGrau() == 0){
-            file << vertice.getName() << " -> " << j.getName() << " [label=\"" << vertice.getWeight() << "\"]" << ";\n";
             fila.push(j);
-            cout << "Push: "<< j.getName() << endl;
+            //cout << "Push: "<< j.getName() << endl;
           }
         }
       }
@@ -319,7 +328,8 @@ void Vertex::aumentaGrau(){
 void Graph::printGraph() {
   ofstream file;
   file.open("graph.dot");
-  file << "digraph G {\n";
+  file << "digraph G {\n label = \"Dígrafo Curso Ciência da Computação - 2019.2\" \n";
+  
   for (auto & i : this->vertexes){
     if(i.adjacents.size() == 0){
       file << i.getName() << ";\n";
@@ -330,5 +340,6 @@ void Graph::printGraph() {
       }
     }    
   }
+
   file << "\n}";
 }

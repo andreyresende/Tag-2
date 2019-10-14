@@ -1,4 +1,5 @@
 digraph G {
+ label = "Dígrafo Curso Ciência da Computação - 2019.2" 
 Calculo_I -> Calculo_II [label="6"];
 Calculo_I -> Probabilidade_e_Estatistica [label="4"];
 Calculo_I -> Projeto_e_Analise_de_Algoritmos [label="4"];
